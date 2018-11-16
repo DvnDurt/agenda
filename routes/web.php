@@ -15,4 +15,14 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'contactos'], function() {
+    Route::get('/', 'ContactoController@index');
+    Route::get('/add', 'ContactoController@create');
+    Route::post('/', 'ContactoController@store');
+    Route::get('{id}', 'ContactoController@show');
+    Route::get('/edit/{id}', 'ContactoController@edit');
+    Route::put('{id}', 'ContactoController@update');
+    Route::delete('{id}', 'ContactoController@destroy');
+});
